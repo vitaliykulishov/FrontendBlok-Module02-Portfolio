@@ -1,0 +1,31 @@
+@use 'font';
+@use 'var' as *;
+* {
+    box-sizing: border-box;
+}
+body {
+    // font-family: $font;
+    // font-weight: 400;
+	// color: $light;
+    // background-color: #1f2023;
+    overflow-x: hidden;
+	
+}
+a {
+    text-decoration: none;
+}
+button {
+	cursor: pointer;
+}
+
+// .container {
+//     width: min(1830px, calc(100% - 90px));
+//     margin-inline: auto;
+//     // width: 100%;
+//     // max-width: 1830px;
+//     // margin: 0 auto;
+//     // padding: 0 45px 0 45px;
+//     @media (max-width: 1024px) {
+//         width: calc(100% - 40px);
+//     }
+// }
