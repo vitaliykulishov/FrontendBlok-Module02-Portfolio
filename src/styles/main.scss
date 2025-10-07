@@ -1,23 +1,30 @@
 @use 'font';
 @use 'var' as *;
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: $font;
     font-weight: 400;
-	// color: $light;
     background-color: #232326;
     overflow-x: hidden;
-	
 }
+
 a {
     text-decoration: none;
 }
+
 button {
 	cursor: pointer;
+}
+
+.container {
+    width: min(1140px, calc(100% - 20px));
+    margin-inline: auto;
 }
 
 .header {
@@ -25,7 +32,7 @@ button {
     height: 104px;
     width: 100%;
     top: 0;
-    background-color: #333; 
+    background-color: $dark; 
     padding: 40px 0;
     &__wrapper {
         display: flex;
@@ -33,7 +40,6 @@ button {
         width: 100%;
     }
     &__tel {
-        // font-weight: 400;
         font-size: 14px;
         line-height: 150%;
         text-transform: capitalize;
@@ -41,24 +47,27 @@ button {
     }
     &__email {
         margin-left: 26px;
-        
-        // padding-left: 13px;
         font-size: 14px;
-
-        /* line-height: 21px; */ 
         line-height: 150%;
         color: $light;
         position: relative;
         &::before {
             content: '';
             position: absolute;
-            // display: block;
             height: 24px;
             width: 0;
             border: 1px solid $light;
             left: -13px;
             top: calc(50% - 12px);
             opacity: 0.5;
+        }
+    }
+    &__tel, &__email {
+        transition: $tr;
+        @media(hover: hover) {
+			&:hover {
+				color: $red;
+			}
         }
     }
 }
@@ -68,24 +77,28 @@ button {
         gap: 30px;
     }
     &__item {
-        
         list-style: none;
+
     }
     &__link {
-        // font-weight: 400;
         font-size: 14px;
         line-height: 150%;
         color: $light;
+        transition: $tr;
+        @media(hover: hover) {
+			&:hover {
+				color: $red;
+			}
+        }
     }
 }
-.container {
-    width: min(1140px, calc(100% - 20px));
-    margin-inline: auto;
-//     // width: 100%;
-//     // max-width: 1830px;
-//     // margin: 0 auto;
-//     // padding: 0 45px 0 45px;
-//     @media (max-width: 1024px) {
-//         width: calc(100% - 40px);
-//     }
-}
+
+
+// .banner {
+//     height: 10000px;
+//     background-color: #fff;
+// }
+// .about-me {
+//     height: 500px;
+//     background-color: #317f8d;
+// }
