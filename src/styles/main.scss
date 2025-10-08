@@ -5,6 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 body {
@@ -27,6 +28,67 @@ button {
     margin-inline: auto;
 }
 
+.contact {
+    display: flex;
+    gap: 26px;
+    &__link {
+    font-size: 14px;
+    line-height: 150%;
+    color: $light;
+    transition: $tr;
+    position: relative;
+    &:last-child::before {
+        content: '';
+        position: absolute;
+        height: 24px;
+        width: 0;
+        border: 1px solid $light;
+        left: -13px;
+        top: calc(50% - 12px);
+        opacity: 0.5;
+    }
+    @media(hover: hover) {
+        &:hover {
+            color: $red;
+        }
+    }
+    }
+    
+}
+.social-link {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap: 20px;
+    &__item {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            height: 15px;
+            width: 0;
+            border: 1px solid $light;
+            left: -10px;
+            top: calc(50% - 8px);
+            opacity: 0.5;
+        }
+        &:first-child::before {
+            display: none;
+        }
+    }
+    &__link {
+        font-size: 12px;
+        line-height: 150%;
+        text-transform: capitalize;
+        color: $light;
+        @media(hover: hover) {
+            &:hover {
+            color: $red;
+        }
+    }
+    }
+}
+
 .header {
     position: fixed;
     height: 104px;
@@ -39,37 +101,6 @@ button {
         justify-content: space-between;
         width: 100%;
     }
-    &__tel {
-        font-size: 14px;
-        line-height: 150%;
-        text-transform: capitalize;
-        color: $light;
-    }
-    &__email {
-        margin-left: 26px;
-        font-size: 14px;
-        line-height: 150%;
-        color: $light;
-        position: relative;
-        &::before {
-            content: '';
-            position: absolute;
-            height: 24px;
-            width: 0;
-            border: 1px solid $light;
-            left: -13px;
-            top: calc(50% - 12px);
-            opacity: 0.5;
-        }
-    }
-    &__tel, &__email {
-        transition: $tr;
-        @media(hover: hover) {
-			&:hover {
-				color: $red;
-			}
-        }
-    }
 }
 .menu {
     &__list {
@@ -77,7 +108,7 @@ button {
         gap: 30px;
     }
     &__item {
-        list-style: none;
+        // list-style: none;
 
     }
     &__link {
@@ -91,14 +122,105 @@ button {
 			}
         }
     }
+    &__social-link, &__contact {
+        display: none;
+    }
 }
 
+.hamburger {
+    cursor: pointer;
+    display: none;
+}
 
-// .banner {
-//     height: 10000px;
-//     background-color: #fff;
-// }
-// .about-me {
-//     height: 500px;
-//     background-color: #317f8d;
-// }
+@media (max-width: 830px) {
+    .header {
+        padding-top: 19px;
+        &__email {
+            &._deact {
+            display: none; }
+        }
+    }
+    .menu {
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 360px;
+		height: 100vh;
+		padding: 0px 15px;
+		transition: 0.6s all;
+        background: #262627;
+		&_active {
+			right: 0;
+        }
+        &__list {
+            // background: #232326;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+		&__item {
+            position: relative;
+            margin-bottom: 20px;
+            &::before, &:last-child::after{
+                content: '';
+                position: absolute;
+                top: -20px;
+                left: calc(50% - 170px);
+                // margin: 0 auto;
+                width: 340px;
+                border: 1px solid $light;
+                width: 340px;
+                height: 0px;
+                opacity: 0.2;
+            }
+            &:last-child::after {
+                top: inherit;
+                bottom: -20px;
+            }
+
+        }
+		&__link {
+            font-size: 26px;
+        }
+        &__social-link, &__contact {
+            display:flex;
+            justify-content: center;
+        }
+        &__social-link {
+            margin-top: 20px;
+        }
+    }
+	.hamburger {
+		width: 26px;
+		height: 20px;
+		display: block;
+		position: absolute;
+		top: 19px;
+		right: 10px;
+		span {
+			display: block;
+			height: 2px;
+			width: 100%;
+			background-color: #fff;
+			margin-bottom: 7px;
+			transition: 0.5s all;
+        }
+		&_active{
+			span{
+				margin-bottom: -2px;
+				&:nth-child(1) {
+					transform: translateY(3px) rotate(-45deg);
+                }
+				&:nth-child(2){
+					display: none;
+                }
+				&:nth-child(3){
+					transform: translateY(3px) rotate(45deg);
+                }
+            }
+        }
+    }
+}
