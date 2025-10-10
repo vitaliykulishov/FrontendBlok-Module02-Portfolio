@@ -16,5 +16,18 @@ window.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.toggle('hamburger_active');
             menu.classList.toggle('menu_active');
         })
+    });
+    
+    document.addEventListener("click", function (e) {
+        const target = e.target;
+        const its_menu = target == menu || menu.contains(target);
+        const its_hamMenu = target == hamburger;
+        const menu_is_active = menu.classList.contains("menu_active");
+
+        if (!its_menu && !its_hamMenu && menu_is_active) {
+            hamburger.classList.toggle('hamburger_active');
+                menu.classList.toggle('menu_active');
+        }
     })
+
 })

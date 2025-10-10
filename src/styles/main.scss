@@ -146,6 +146,57 @@ button {
     cursor: pointer;
     display: none;
 }
+.pop-up {
+    display: block;
+    width: 600px;
+    height: 572px;
+    background: #232326;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 55px 20px 40px 20px
+}
+.popup-btn {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    color: $light;
+    position: relative;
+    transition: $tr;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -30px;
+        bottom: calc(50% - 7px);
+        height: 11px;
+        width: 15px;
+        transition: $tr;
+        background: url(../images/arrow-open.svg);
+        background-repeat: no-repeat; 
+        // transition: $tr;
+    }
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -11px;
+        width: 0;
+        border-bottom: 2px solid $light;
+        transition: all .3s;
+    }
+    @media(hover: hover) {
+        &:hover {
+            &::after {
+                content: '';
+                width: calc(100% + 30px);;
+            }
+        }
+    }               
+}
+
 .banner {
     margin-top: 124px;
     &__img {
@@ -205,43 +256,8 @@ button {
         border-bottom: 1px solid $light;
     }
     &__popup-btn {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 150%;
-        color: $light;
-        position: relative;
-        transition: $tr;
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            right: -30px;
-            bottom: calc(50% - 7px);
-            height: 11px;
-            width: 15px;
-            transition: $tr;
-            background: url(../images/arrow-open.svg);
-            background-repeat: no-repeat; 
-            // transition: $tr;
-        }
-        &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    left: 0;
-                    bottom: -11px;
-                    width: 0;
-                    border-bottom: 2px solid $light;
-                    transition: all .3s;
-        }
-        @media(hover: hover) {
-            &:hover {
-                &::after {
-                    content: '';
-                    width: calc(100% + 30px);;
-                }
-            }
-        }               
+        
+ 
 
     }
     &__social {
